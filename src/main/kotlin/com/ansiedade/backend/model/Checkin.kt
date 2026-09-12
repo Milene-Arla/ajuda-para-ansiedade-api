@@ -24,4 +24,4 @@ data class Checkin(
 
     @Column(name = "data_registro")
     val dataRegistro: LocalDateTime = LocalDateTime.now()
-) //
+)

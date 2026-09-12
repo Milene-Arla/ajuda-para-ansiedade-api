@@ -15,7 +15,8 @@ class CorsConfig : WebMvcConfigurer {
                 "http://127.0.0.1:5500",
                 "http://localhost:3000",
                 "http://127.0.0.1:3000",
-                "https://ajuda-para-ansiedade-site.vercel.app"
+                "https://ajuda-para-ansiedade-site.vercel.app",
+                "https://ajuda-para-ansiedade-api.onrender.com"
             )
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
             .allowedHeaders("*")
