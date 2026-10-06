@@ -28,4 +28,10 @@ class CheckinController(private val checkinRepository: CheckinRepository) {
     fun listarTodos(): ResponseEntity<List<Checkin>> {
         return ResponseEntity.ok(checkinRepository.findAll())
     }
+
+    @GetMapping("/codigo/{codigo}")
+    fun listarPorCodigo(@PathVariable codigo: String): ResponseEntity<List<Checkin>> {
+        val checkins = checkinRepository.findByCodigoAcompanhamentoOrderByDataRegistroDesc(codigo)
+        return ResponseEntity.ok(checkins)
+    }
 }
