@@ -14,13 +14,13 @@ data class Checkin(
     val codigoAcompanhamento: String = "",
 
     @Column(name = "nivel_ansiedade", nullable = false)
-    val nivelAnsiedade: Int = 1,
+    var nivelAnsiedade: Int = 1,
 
     @Column(name = "emocao_principal", nullable = false, length = 50)
-    val emocaoPrincipal: String = "",
+    var emocaoPrincipal: String = "",
 
     @Column(name = "anotacao", length = 500)
-    val anotacao: String? = null,
+    var anotacao: String? = null,
 
     @Column(name = "data_registro")
     val dataRegistro: LocalDateTime = LocalDateTime.now()

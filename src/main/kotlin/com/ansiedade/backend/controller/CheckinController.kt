@@ -34,4 +34,25 @@ class CheckinController(private val checkinRepository: CheckinRepository) {
         val checkins = checkinRepository.findByCodigoAcompanhamentoOrderByDataRegistroDesc(codigo)
         return ResponseEntity.ok(checkins)
     }
+
+    @PutMapping("/{id}")
+    fun atualizarCheckin(
+        @PathVariable id: Long,
+        @RequestBody checkinAtualizado: Checkin
+    ): ResponseEntity<Checkin> {
+        val checkinExistente = checkinRepository.findById(id)
+
+        if (checkinExistente.isEmpty) {
+            return ResponseEntity.notFound().build()
+        }
+
+        val registro = checkinExistente.get()
+
+        registro.nivelAnsiedade = checkinAtualizado.nivelAnsiedade
+        registro.emocaoPrincipal = checkinAtualizado.emocaoPrincipal
+        registro.anotacao = checkinAtualizado.anotacao
+
+        val salvo = checkinRepository.save(registro)
+        return ResponseEntity.ok(salvo)
+    }
 }
